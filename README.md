@@ -1,5 +1,18 @@
-a simple project of vue
-also it contains node express and mongoose
+a front + back end framework
+
+pack：webpack
+
+front-end: vue + vue-template-compiler + vue-router + axios + ES6
+
 do not use vue-cli
-can build project
-front + back end framework
+
+back-end: node + express + mongoose
+
+database:mongoDB studio3T
+
+usage
+ 
+ npm install 
+
+
+
