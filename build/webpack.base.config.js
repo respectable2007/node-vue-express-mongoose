@@ -1,8 +1,8 @@
 var path = require('path')
-var webpack = require('webpack')
+// var webpack = require('webpack')
 var cleanWebpackPlugin = require('clean-webpack-plugin')
 var htmlwebpackplugin = require('html-webpack-plugin')
-var config = {
+module.exports = {
   entry: './src/index.js',
   output: {
   	filename: '[name].js',
@@ -32,17 +32,22 @@ var config = {
       },
       {
       	test: /\.vue$/,
-      	loader: 'vue-loader'
+      	use: ['vue-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        loader: 'file-loader'
+        use: ['file-loader']
       },
       {
         test: /\.(ttf|woff|eot)$/,
-        loader: 'file-loader'
+        use: ['file-loader']
       }
     ]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, './dist'),
+    host: 'localhost',
+    port: 9292
   },
   plugins:[
     // 清理dist文件
@@ -51,11 +56,11 @@ var config = {
     new htmlwebpackplugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../index.html')
-    }),
+    })
+    // ,
     // 热模块替换设置
     // new webpack.optimize.OccurenceOrderPlugin(), --webpack1.x时设置
-    new webpack.HotModuleReplacementPlugin()
+    // new webpack.HotModuleReplacementPlugin()
     // new webpack.NoEmitOnErrorsPlugin() --webpack1.x时设置
   ]
 }
-module.exports = config
